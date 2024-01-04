@@ -9,24 +9,13 @@ img_file_buffer = st.camera_input("Take a picture")
 if img_file_buffer is not None:
     # To read image file buffer as a PIL Image:
     img = Image.open(img_file_buffer)
-
-    # To convert PIL Image to numpy array:
-    img_array = np.array(img)
-
-    # Check the type of img_array:
-    # Should output: <class 'numpy.ndarray'>
-    st.write(type(img_array))
-
-    # Check the shape of img_array:
-    # Should output shape: (height, width, channels)
-    st.write(img_array.shape)
-
+    st.write('Show image:')
+    st.image(img, width=200)
 
 
 
 
 uploaded_file = st.file_uploader("Choose a image file", type="jpg")
-
 if uploaded_file is not None:
     # Convert the file to an opencv image.
     uploaded_file.read()
@@ -35,9 +24,8 @@ if uploaded_file is not None:
         image = image.convert('RGB')
     st.image(image, width=200)
 
-    st.write('Type of image', type(image))
+
 
 latex_output = "\sum _ { i = 2 n + 3 m } ^ { 1 0 } i x"
-st.write('Latex code', latex_output)
-
+st.write('Latex code:', latex_output)
 st.latex(latex_output)
