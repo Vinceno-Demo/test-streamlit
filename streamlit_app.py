@@ -41,6 +41,6 @@ if uploaded_file is not None:
 
     st.text(type(image))
 
-latex_output = "a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} = \sum_{k=0}^{n-1} ar^k = a \left(\frac{1-r^{n}}{1-r}\right)"
+latex_output = "\sum _ { i = 2 n + 3 m } ^ { 1 0 } i x"
 
 st.latex(latex_output)
