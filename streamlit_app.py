@@ -37,4 +37,4 @@ if uploaded_file is not None:
     # Convert the file to an opencv image.
     uploaded_file.read()
     image = Image.open(uploaded_file)
-    st.write(image.shape)
+    st.image(image, width=200)
