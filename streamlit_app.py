@@ -35,6 +35,6 @@ uploaded_file = st.file_uploader("Choose a image file", type="jpg")
 
 if uploaded_file is not None:
     # Convert the file to an opencv image.
-    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    image = Image.open(file_bytes)
+    uploaded_file.read()
+    image = Image.open(uploaded_file)
     st.write(image.shape)
