@@ -47,6 +47,7 @@
 import torch
 import logging
 import argparse
+import streamlit as st
 from PIL import Image
 from transformers import AutoProcessor
 from transformers import VisionEncoderDecoderModel
