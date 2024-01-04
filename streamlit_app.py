@@ -68,12 +68,12 @@ else:
     device = torch.device("cpu")
 
 # Init model
-model = VisionEncoderDecoderModel.from_pretrained(
-    facebook/nougat-base
+model = ".from_pretrained(
+    "facebook/nougat-base"
 ).to(device)
 
 # Init processor
-processor = AutoProcessor.from_pretrained(facebook/nougat-base)
+processor = AutoProcessor.from_pretrained("facebook/nougat-base")
 
 uploaded_file = st.file_uploader("Choose a image file", type="jpg")
 if uploaded_file is not None:
