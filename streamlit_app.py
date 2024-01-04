@@ -70,11 +70,11 @@ else:
 
 # Init model
 model = VisionEncoderDecoderModel.from_pretrained(
-    "facebook/nougat-base"
+    "facebook/nougat-small"
 ).to(device)
 
 # Init processor
-processor = AutoProcessor.from_pretrained("facebook/nougat-base")
+processor = AutoProcessor.from_pretrained("facebook/nougat-small")
 
 uploaded_file = st.file_uploader("Choose a image file", type="jpg")
 if uploaded_file is not None:
