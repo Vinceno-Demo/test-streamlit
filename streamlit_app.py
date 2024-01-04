@@ -24,12 +24,6 @@ if img_file_buffer is not None:
 
 
 
-# uploaded_file = st.file_uploader("Upload Image")
-# image = Image.open(uploaded_file)
-# st.image(image, caption='Input', use_column_width=True)
-# img = Image.open(image)
-# img.show()
-
 
 uploaded_file = st.file_uploader("Choose a image file", type="jpg")
 
@@ -41,8 +35,9 @@ if uploaded_file is not None:
         image = image.convert('RGB')
     st.image(image, width=200)
 
-    st.text(type(image))
+    st.write('Type of image', type(image))
 
 latex_output = "\sum _ { i = 2 n + 3 m } ^ { 1 0 } i x"
+st.write('Latex code', latex_output)
 
 st.latex(latex_output)
