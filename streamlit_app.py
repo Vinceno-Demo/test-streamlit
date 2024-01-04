@@ -85,44 +85,44 @@ if uploaded_file is not None:
         image = image.convert('RGB')
     st.image(image, width=200)
     
-# # Load image
-# image = Image.open(args.input_image)
-# if not image.mode == "RGB":
-#     image = image.convert('RGB')
+    # # Load image
+    # image = Image.open(args.input_image)
+    # if not image.mode == "RGB":
+    #     image = image.convert('RGB')
 
-pixel_values = processor.image_processor(
-    image,
-    return_tensors="pt",
-    data_format="channels_first",
-).pixel_values
-task_prompt = processor.tokenizer.bos_token
-decoder_input_ids = processor.tokenizer(
-    task_prompt,
-    add_special_tokens=False,
-    return_tensors="pt"
-).input_ids
-
-# Generate LaTeX expression
-with torch.no_grad():
-    outputs = model.generate(
-        pixel_values.to(device),
-        decoder_input_ids=decoder_input_ids.to(device),
-        max_length=model.decoder.config.max_length,
-        early_stopping=True,
-        pad_token_id=processor.tokenizer.pad_token_id,
-        eos_token_id=processor.tokenizer.eos_token_id,
-        use_cache=True,
-        num_beams=4,
-        bad_words_ids=[[processor.tokenizer.unk_token_id]],
-        return_dict_in_generate=True,
-    )
-sequence = processor.tokenizer.batch_decode(outputs.sequences)[0]
-sequence = sequence.replace(
-        processor.tokenizer.eos_token, ""
-    ).replace(
-        processor.tokenizer.pad_token, ""
-    ).replace(processor.tokenizer.bos_token,"")
-
-st.write('Latex code:', sequence)
-st.latex(sequence)
+    pixel_values = processor.image_processor(
+        image,
+        return_tensors="pt",
+        data_format="channels_first",
+    ).pixel_values
+    task_prompt = processor.tokenizer.bos_token
+    decoder_input_ids = processor.tokenizer(
+        task_prompt,
+        add_special_tokens=False,
+        return_tensors="pt"
+    ).input_ids
+    
+    # Generate LaTeX expression
+    with torch.no_grad():
+        outputs = model.generate(
+            pixel_values.to(device),
+            decoder_input_ids=decoder_input_ids.to(device),
+            max_length=model.decoder.config.max_length,
+            early_stopping=True,
+            pad_token_id=processor.tokenizer.pad_token_id,
+            eos_token_id=processor.tokenizer.eos_token_id,
+            use_cache=True,
+            num_beams=4,
+            bad_words_ids=[[processor.tokenizer.unk_token_id]],
+            return_dict_in_generate=True,
+        )
+    sequence = processor.tokenizer.batch_decode(outputs.sequences)[0]
+    sequence = sequence.replace(
+            processor.tokenizer.eos_token, ""
+        ).replace(
+            processor.tokenizer.pad_token, ""
+        ).replace(processor.tokenizer.bos_token,"")
+    
+    st.write('Latex code:', sequence)
+    st.latex(sequence)
 
