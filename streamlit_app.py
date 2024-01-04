@@ -38,3 +38,5 @@ if uploaded_file is not None:
     uploaded_file.read()
     image = Image.open(uploaded_file)
     st.image(image, width=200)
+
+    st.text('Type of image', type(image))
