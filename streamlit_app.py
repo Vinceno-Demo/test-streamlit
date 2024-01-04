@@ -4,6 +4,15 @@ import numpy as np
 import pandas as pd
 from io import StringIO
 
+
+import torch
+import logging
+import argparse
+from PIL import Image
+from transformers import AutoProcessor
+from transformers import VisionEncoderDecoderModel
+
+
 img_file_buffer = st.camera_input("Take a picture")
 
 if img_file_buffer is not None:
