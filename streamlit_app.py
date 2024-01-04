@@ -3,7 +3,6 @@ from PIL import Image
 import numpy as np
 import pandas as pd
 from io import StringIO
-import cv2
 
 img_file_buffer = st.camera_input("Take a picture")
 
