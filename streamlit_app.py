@@ -39,4 +39,8 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, width=200)
 
-    st.text('Type of image', type(image))
+    st.text(type(image))
+
+latex_output = 'a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} = \sum_{k=0}^{n-1} ar^k = a \left(\frac{1-r^{n}}{1-r}\right)'
+
+st.latex(latex_output)
