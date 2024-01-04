@@ -68,7 +68,7 @@ else:
     device = torch.device("cpu")
 
 # Init model
-model = ".from_pretrained(
+model = .from_pretrained(
     "facebook/nougat-base"
 ).to(device)
 
