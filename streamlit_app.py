@@ -28,5 +28,5 @@ if img_file_buffer is not None:
 uploaded_file = st.file_uploader("Upload Image")
 image = Image.open(uploaded_file)
 st.image(image, caption='Input', use_column_width=True)
-img_array = np.array(image)
-cv2.imwrite('out.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
+img = Image.open(image)
+img.show()
