@@ -3,6 +3,7 @@ from PIL import Image
 import numpy as np
 import pandas as pd
 from io import StringIO
+import cv2
 
 img_file_buffer = st.camera_input("Take a picture")
 
@@ -24,8 +25,8 @@ if img_file_buffer is not None:
 
 
 
-uploaded_files = st.file_uploader("Choose a image file", type=['png', 'jpg'])
-for uploaded_file in uploaded_files:
-    bytes_data = uploaded_file.read()
-    st.write("filename:", uploaded_file.name)
-    st.write(bytes_data)
+uploaded_file = st.file_uploader("Upload Image")
+image = Image.open(uploaded_file)
+st.image(image, caption='Input', use_column_width=True)
+img_array = np.array(image)
+cv2.imwrite('out.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
