@@ -24,7 +24,7 @@ if img_file_buffer is not None:
 
 
 
-uploaded_files = st.file_uploader("Choose a image file", type=['png', 'jpg', 'bmp'])
+uploaded_files = st.file_uploader("Choose a image file", type=['png', 'jpg'])
 for uploaded_file in uploaded_files:
     bytes_data = uploaded_file.read()
     st.write("filename:", uploaded_file.name)
